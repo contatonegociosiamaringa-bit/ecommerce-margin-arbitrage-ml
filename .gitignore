@@ -1,0 +1,24 @@
+# Ambientes virtuais
+.venv/
+venv/
+env/
+
+# Python cache e build
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+
+# Segredos e dados locais brutos
+.env
+.env.*
+*.sqlite
+*.sqlite3
+*.db
+*.xlsx
+*.xls
+
+# Jupyter e logs
+.ipynb_checkpoints/
+*.log

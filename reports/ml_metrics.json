@@ -1,0 +1,234 @@
+{
+  "dataset_summary": {
+    "sku_catalog_rows": 64,
+    "orders_reconciliation_rows": 500,
+    "observed_sanitized_orders": 16,
+    "synthetic_augmented_orders": 484
+  },
+  "supervised_classification": {
+    "train_rows": 375,
+    "holdout_rows": 125,
+    "positive_class_rate": 0.366,
+    "features_used": [
+      "item_price_brl",
+      "supplier_cost_brl",
+      "quantity",
+      "weight_kg",
+      "volumetric_cm3",
+      "monthly_search_volume",
+      "cpa_target_brl",
+      "price_vs_market_avg_ratio",
+      "markup_ratio",
+      "gross_spread_pct",
+      "coupon_pct",
+      "expected_tax_pct",
+      "expected_fee_ratio",
+      "category",
+      "account_regime",
+      "traffic_channel",
+      "competition_level"
+    ],
+    "best_model_name": "RandomForestClassifier",
+    "best_model_path": "models/margin_risk_classifier.joblib",
+    "models": {
+      "LogisticRegression": {
+        "cv_5fold": {
+          "accuracy_mean": 0.7493,
+          "accuracy_std": 0.0285,
+          "f1_mean": 0.6369,
+          "f1_std": 0.0629,
+          "roc_auc_mean": 0.8312,
+          "roc_auc_std": 0.0423
+        },
+        "holdout": {
+          "accuracy": 0.72,
+          "precision": 0.6279,
+          "recall": 0.587,
+          "f1_score": 0.6067,
+          "roc_auc": 0.8126,
+          "confusion_matrix": [
+            [
+              63,
+              16
+            ],
+            [
+              19,
+              27
+            ]
+          ]
+        }
+      },
+      "RandomForestClassifier": {
+        "cv_5fold": {
+          "accuracy_mean": 0.7547,
+          "accuracy_std": 0.0181,
+          "f1_mean": 0.645,
+          "f1_std": 0.0343,
+          "roc_auc_mean": 0.8304,
+          "roc_auc_std": 0.0313
+        },
+        "holdout": {
+          "accuracy": 0.72,
+          "precision": 0.641,
+          "recall": 0.5435,
+          "f1_score": 0.5882,
+          "roc_auc": 0.8156,
+          "confusion_matrix": [
+            [
+              65,
+              14
+            ],
+            [
+              21,
+              25
+            ]
+          ]
+        }
+      },
+      "GradientBoostingClassifier": {
+        "cv_5fold": {
+          "accuracy_mean": 0.752,
+          "accuracy_std": 0.0364,
+          "f1_mean": 0.6603,
+          "f1_std": 0.0581,
+          "roc_auc_mean": 0.8409,
+          "roc_auc_std": 0.0351
+        },
+        "holdout": {
+          "accuracy": 0.768,
+          "precision": 0.6667,
+          "recall": 0.7391,
+          "f1_score": 0.701,
+          "roc_auc": 0.814,
+          "confusion_matrix": [
+            [
+              62,
+              17
+            ],
+            [
+              12,
+              34
+            ]
+          ]
+        }
+      }
+    },
+    "top_features_permutation": [
+      {
+        "feature": "traffic_channel",
+        "importance_mean": 0.0642,
+        "importance_std": 0.0241
+      },
+      {
+        "feature": "markup_ratio",
+        "importance_mean": 0.0432,
+        "importance_std": 0.027
+      },
+      {
+        "feature": "gross_spread_pct",
+        "importance_mean": 0.0196,
+        "importance_std": 0.0195
+      },
+      {
+        "feature": "expected_fee_ratio",
+        "importance_mean": 0.0156,
+        "importance_std": 0.007
+      },
+      {
+        "feature": "price_vs_market_avg_ratio",
+        "importance_mean": 0.0121,
+        "importance_std": 0.0149
+      },
+      {
+        "feature": "account_regime",
+        "importance_mean": 0.0038,
+        "importance_std": 0.0038
+      },
+      {
+        "feature": "coupon_pct",
+        "importance_mean": 0.0013,
+        "importance_std": 0.002
+      },
+      {
+        "feature": "volumetric_cm3",
+        "importance_mean": 0.0013,
+        "importance_std": 0.008
+      },
+      {
+        "feature": "expected_tax_pct",
+        "importance_mean": 0.0007,
+        "importance_std": 0.0017
+      },
+      {
+        "feature": "item_price_brl",
+        "importance_mean": -0.0006,
+        "importance_std": 0.0067
+      }
+    ]
+  },
+  "unsupervised_clustering": {
+    "n_skus_clustered": 64,
+    "chosen_k": 4,
+    "silhouette_score": 0.2538,
+    "silhouette_grid": {
+      "k=3": 0.2305,
+      "k=4": 0.2528,
+      "k=5": 0.2633
+    },
+    "features_used": [
+      "effective_margin_pct",
+      "log_monthly_demand",
+      "turnover_proxy",
+      "competition_score"
+    ],
+    "model_path": "models/sku_kmeans_clusterer.joblib",
+    "clusters": [
+      {
+        "cluster_id": 0,
+        "cluster_label": "Alto Volume & Competição Elevada",
+        "sku_count": 21,
+        "mean_margin_pct": 15.45,
+        "mean_monthly_search": 43520.5,
+        "mean_turnover_proxy": 30.4,
+        "mean_competition_score": 3.76,
+        "mean_cpa_roi": 2.32
+      },
+      {
+        "cluster_id": 1,
+        "cluster_label": "Zona Crítica (Margem Pressionada / Negativa)",
+        "sku_count": 9,
+        "mean_margin_pct": -9.17,
+        "mean_monthly_search": 31228.4,
+        "mean_turnover_proxy": 19.87,
+        "mean_competition_score": 2.56,
+        "mean_cpa_roi": 0.53
+      },
+      {
+        "cluster_id": 2,
+        "cluster_label": "Nicho Equilibrado (Baixa Competição)",
+        "sku_count": 29,
+        "mean_margin_pct": 15.49,
+        "mean_monthly_search": 20794.0,
+        "mean_turnover_proxy": 18.78,
+        "mean_competition_score": 2.31,
+        "mean_cpa_roi": 2.68
+      },
+      {
+        "cluster_id": 3,
+        "cluster_label": "Estrelas de Alto Giro (Top Margem & ROI)",
+        "sku_count": 5,
+        "mean_margin_pct": 21.06,
+        "mean_monthly_search": 28460.2,
+        "mean_turnover_proxy": 83.22,
+        "mean_competition_score": 2.4,
+        "mean_cpa_roi": 3.34
+      }
+    ]
+  },
+  "figures": [
+    "reports/figures/margin_distribution_by_category.png",
+    "reports/figures/fee_freight_impact.png",
+    "reports/figures/sku_clusters_matrix.png",
+    "reports/figures/classifier_roc_and_importance.png"
+  ]
+}

@@ -1,0 +1,532 @@
+{
+  "schema_tables_validated": [
+    "dim_sku_catalog",
+    "fact_orders_reconciliation",
+    "mart_margin_risk"
+  ],
+  "dim_sku_catalog_rows": 64,
+  "fact_orders_reconciliation_rows": 500,
+  "mart_margin_risk_rows": 207,
+  "queries_executed": 7,
+  "queries_passed": 7,
+  "results": {
+    "q1_margin_by_category": {
+      "row_count": 9,
+      "columns": [
+        "category",
+        "total_orders",
+        "total_gmv_brl",
+        "total_net_profit_brl",
+        "avg_net_margin_pct",
+        "healthy_order_rate_pct",
+        "divergence_rate_pct"
+      ],
+      "rows": [
+        {
+          "category": "Cozinha Prática",
+          "total_orders": 16,
+          "total_gmv_brl": 1033.97,
+          "total_net_profit_brl": 191.93,
+          "avg_net_margin_pct": 17.65,
+          "healthy_order_rate_pct": 62.5,
+          "divergence_rate_pct": 6.25
+        },
+        {
+          "category": "Brinquedos e Hobbies",
+          "total_orders": 42,
+          "total_gmv_brl": 3789.48,
+          "total_net_profit_brl": 641.72,
+          "avg_net_margin_pct": 15.5,
+          "healthy_order_rate_pct": 28.57,
+          "divergence_rate_pct": 33.33
+        },
+        {
+          "category": "Iluminação e Casa",
+          "total_orders": 74,
+          "total_gmv_brl": 6871.09,
+          "total_net_profit_brl": 1107.4,
+          "avg_net_margin_pct": 14.23,
+          "healthy_order_rate_pct": 37.84,
+          "divergence_rate_pct": 28.38
+        },
+        {
+          "category": "Beleza e Cosméticos",
+          "total_orders": 76,
+          "total_gmv_brl": 5271.72,
+          "total_net_profit_brl": 762.6,
+          "avg_net_margin_pct": 13.17,
+          "healthy_order_rate_pct": 40.79,
+          "divergence_rate_pct": 21.05
+        },
+        {
+          "category": "Esportes e Fitness",
+          "total_orders": 66,
+          "total_gmv_brl": 4711.07,
+          "total_net_profit_brl": 788.91,
+          "avg_net_margin_pct": 12.47,
+          "healthy_order_rate_pct": 37.88,
+          "divergence_rate_pct": 30.3
+        },
+        {
+          "category": "Eletrônicos e Casa Inteligente",
+          "total_orders": 38,
+          "total_gmv_brl": 4243.43,
+          "total_net_profit_brl": 666.46,
+          "avg_net_margin_pct": 12.03,
+          "healthy_order_rate_pct": 36.84,
+          "divergence_rate_pct": 31.58
+        },
+        {
+          "category": "Cozinha e Utilidades",
+          "total_orders": 59,
+          "total_gmv_brl": 2472.21,
+          "total_net_profit_brl": 296.88,
+          "avg_net_margin_pct": 9.38,
+          "healthy_order_rate_pct": 27.12,
+          "divergence_rate_pct": 30.51
+        },
+        {
+          "category": "Brinquedos Educativos",
+          "total_orders": 55,
+          "total_gmv_brl": 3375.33,
+          "total_net_profit_brl": 350.92,
+          "avg_net_margin_pct": 8.94,
+          "healthy_order_rate_pct": 38.18,
+          "divergence_rate_pct": 32.73
+        },
+        {
+          "category": "Limpeza e Utilidades",
+          "total_orders": 60,
+          "total_gmv_brl": 4491.78,
+          "total_net_profit_brl": 664.11,
+          "avg_net_margin_pct": 8.63,
+          "healthy_order_rate_pct": 43.33,
+          "divergence_rate_pct": 28.33
+        }
+      ]
+    },
+    "q2_freight_weight_impact": {
+      "row_count": 3,
+      "columns": [
+        "weight_bracket",
+        "total_orders",
+        "avg_weight_kg",
+        "negative_freight_orders",
+        "freight_loss_incidence_pct",
+        "avg_freight_deduction_brl",
+        "avg_net_margin_pct"
+      ],
+      "rows": [
+        {
+          "weight_bracket": "1_LEVE_ATE_200G",
+          "total_orders": 149,
+          "avg_weight_kg": 0.161,
+          "negative_freight_orders": 11,
+          "freight_loss_incidence_pct": 7.38,
+          "avg_freight_deduction_brl": -0.11,
+          "avg_net_margin_pct": 17.25
+        },
+        {
+          "weight_bracket": "2_MEDIO_201G_A_350G",
+          "total_orders": 222,
+          "avg_weight_kg": 0.278,
+          "negative_freight_orders": 39,
+          "freight_loss_incidence_pct": 17.57,
+          "avg_freight_deduction_brl": -0.38,
+          "avg_net_margin_pct": 9.56
+        },
+        {
+          "weight_bracket": "3_PESADO_ACIMA_350G",
+          "total_orders": 115,
+          "avg_weight_kg": 0.4,
+          "negative_freight_orders": 33,
+          "freight_loss_incidence_pct": 28.7,
+          "avg_freight_deduction_brl": -0.78,
+          "avg_net_margin_pct": 9.89
+        }
+      ]
+    },
+    "q3_cpf_vs_cnpj_regime": {
+      "row_count": 4,
+      "columns": [
+        "account_regime",
+        "total_orders",
+        "avg_ticket_brl",
+        "avg_contractual_fee_pct",
+        "avg_effective_fee_pct",
+        "avg_tax_pct",
+        "avg_net_margin_pct",
+        "healthy_rate_pct"
+      ],
+      "rows": [
+        {
+          "account_regime": "CPF_PADRAO",
+          "total_orders": 161,
+          "avg_ticket_brl": 64.31,
+          "avg_contractual_fee_pct": 32.3,
+          "avg_effective_fee_pct": 32.34,
+          "avg_tax_pct": 0.0,
+          "avg_net_margin_pct": 14.04,
+          "healthy_rate_pct": 40.99
+        },
+        {
+          "account_regime": "CNPJ_SIMPLES_4PCT",
+          "total_orders": 130,
+          "avg_ticket_brl": 80.24,
+          "avg_contractual_fee_pct": 30.84,
+          "avg_effective_fee_pct": 31.19,
+          "avg_tax_pct": 4.0,
+          "avg_net_margin_pct": 12.39,
+          "healthy_rate_pct": 37.69
+        },
+        {
+          "account_regime": "CNPJ_SIMPLES_6PCT",
+          "total_orders": 90,
+          "avg_ticket_brl": 82.39,
+          "avg_contractual_fee_pct": 30.79,
+          "avg_effective_fee_pct": 31.1,
+          "avg_tax_pct": 6.0,
+          "avg_net_margin_pct": 10.76,
+          "healthy_rate_pct": 38.89
+        },
+        {
+          "account_regime": "CPF_ALTO_VOLUME",
+          "total_orders": 105,
+          "avg_ticket_brl": 76.76,
+          "avg_contractual_fee_pct": 38.43,
+          "avg_effective_fee_pct": 39.48,
+          "avg_tax_pct": 0.0,
+          "avg_net_margin_pct": 9.43,
+          "healthy_rate_pct": 31.43
+        }
+      ]
+    },
+    "q4_financial_divergence_audit": {
+      "row_count": 6,
+      "columns": [
+        "data_origin",
+        "audit_classification",
+        "orders_count",
+        "share_within_origin_pct",
+        "total_fee_overcharge_brl",
+        "total_freight_loss_brl",
+        "avg_net_margin_pct"
+      ],
+      "rows": [
+        {
+          "data_origin": "OBSERVED_SANITIZED",
+          "audit_classification": "OK",
+          "orders_count": 8,
+          "share_within_origin_pct": 50.0,
+          "total_fee_overcharge_brl": 0.0,
+          "total_freight_loss_brl": 0.0,
+          "avg_net_margin_pct": 21.05
+        },
+        {
+          "data_origin": "OBSERVED_SANITIZED",
+          "audit_classification": "ERRO_COMPROVADO",
+          "orders_count": 7,
+          "share_within_origin_pct": 43.75,
+          "total_fee_overcharge_brl": 0.0,
+          "total_freight_loss_brl": 11.9,
+          "avg_net_margin_pct": 19.58
+        },
+        {
+          "data_origin": "OBSERVED_SANITIZED",
+          "audit_classification": "SUSPEITA",
+          "orders_count": 1,
+          "share_within_origin_pct": 6.25,
+          "total_fee_overcharge_brl": 0.0,
+          "total_freight_loss_brl": 0.0,
+          "avg_net_margin_pct": NaN
+        },
+        {
+          "data_origin": "SYNTHETIC_AUGMENTED",
+          "audit_classification": "OK",
+          "orders_count": 291,
+          "share_within_origin_pct": 60.12,
+          "total_fee_overcharge_brl": 0.0,
+          "total_freight_loss_brl": 0.0,
+          "avg_net_margin_pct": 17.22
+        },
+        {
+          "data_origin": "SYNTHETIC_AUGMENTED",
+          "audit_classification": "ERRO_COMPROVADO",
+          "orders_count": 180,
+          "share_within_origin_pct": 37.19,
+          "total_fee_overcharge_brl": 136.15,
+          "total_freight_loss_brl": 177.06,
+          "avg_net_margin_pct": 2.86
+        },
+        {
+          "data_origin": "SYNTHETIC_AUGMENTED",
+          "audit_classification": "SUSPEITA",
+          "orders_count": 13,
+          "share_within_origin_pct": 2.69,
+          "total_fee_overcharge_brl": 0.0,
+          "total_freight_loss_brl": 8.84,
+          "avg_net_margin_pct": NaN
+        }
+      ]
+    },
+    "q5_sku_cpa_roi_and_elasticity_ranking": {
+      "row_count": 15,
+      "columns": [
+        "sku",
+        "category",
+        "competition_level",
+        "orders_count",
+        "avg_realized_margin_pct",
+        "cpa_target_brl",
+        "cpa_roi_ratio",
+        "price_elasticity_coef",
+        "cpa_roi_rank"
+      ],
+      "rows": [
+        {
+          "sku": "SYN-BRI-024",
+          "category": "Brinquedos e Hobbies",
+          "competition_level": "LOW",
+          "orders_count": 2,
+          "avg_realized_margin_pct": 25.75,
+          "cpa_target_brl": 3.65,
+          "cpa_roi_ratio": 5.466,
+          "price_elasticity_coef": -1.022,
+          "cpa_roi_rank": 1
+        },
+        {
+          "sku": "SYN-LIM-034",
+          "category": "Limpeza e Utilidades",
+          "competition_level": "LOW",
+          "orders_count": 3,
+          "avg_realized_margin_pct": 25.25,
+          "cpa_target_brl": 6.01,
+          "cpa_roi_ratio": 4.304,
+          "price_elasticity_coef": -1.067,
+          "cpa_roi_rank": 2
+        },
+        {
+          "sku": "SYN-ILU-004",
+          "category": "Iluminação e Casa",
+          "competition_level": "MODERATE",
+          "orders_count": 8,
+          "avg_realized_margin_pct": 26.91,
+          "cpa_target_brl": 11.78,
+          "cpa_roi_ratio": 4.108,
+          "price_elasticity_coef": -1.436,
+          "cpa_roi_rank": 3
+        },
+        {
+          "sku": "SYN-LIM-026",
+          "category": "Limpeza e Utilidades",
+          "competition_level": "LOW",
+          "orders_count": 6,
+          "avg_realized_margin_pct": 18.1,
+          "cpa_target_brl": 4.8,
+          "cpa_roi_ratio": 3.929,
+          "price_elasticity_coef": -1.016,
+          "cpa_roi_rank": 4
+        },
+        {
+          "sku": "SYN-ELE-039",
+          "category": "Eletrônicos e Casa Inteligente",
+          "competition_level": "MODERATE",
+          "orders_count": 7,
+          "avg_realized_margin_pct": 26.02,
+          "cpa_target_brl": 9.53,
+          "cpa_roi_ratio": 3.91,
+          "price_elasticity_coef": -1.421,
+          "cpa_roi_rank": 5
+        },
+        {
+          "sku": "SYN-ELE-007",
+          "category": "Eletrônicos e Casa Inteligente",
+          "competition_level": "LOW",
+          "orders_count": 3,
+          "avg_realized_margin_pct": 17.13,
+          "cpa_target_brl": 5.23,
+          "cpa_roi_ratio": 3.646,
+          "price_elasticity_coef": -1.065,
+          "cpa_roi_rank": 6
+        },
+        {
+          "sku": "SYN-COZ-009",
+          "category": "Cozinha e Utilidades",
+          "competition_level": "MODERATE",
+          "orders_count": 9,
+          "avg_realized_margin_pct": 20.86,
+          "cpa_target_brl": 4.59,
+          "cpa_roi_ratio": 3.586,
+          "price_elasticity_coef": -1.385,
+          "cpa_roi_rank": 7
+        },
+        {
+          "sku": "SYN-BEL-013",
+          "category": "Beleza e Cosméticos",
+          "competition_level": "MODERATE",
+          "orders_count": 5,
+          "avg_realized_margin_pct": 22.4,
+          "cpa_target_brl": 8.17,
+          "cpa_roi_ratio": 3.536,
+          "price_elasticity_coef": -1.456,
+          "cpa_roi_rank": 8
+        },
+        {
+          "sku": "SYN-ESP-003",
+          "category": "Esportes e Fitness",
+          "competition_level": "MODERATE",
+          "orders_count": 5,
+          "avg_realized_margin_pct": 20.29,
+          "cpa_target_brl": 5.57,
+          "cpa_roi_ratio": 3.528,
+          "price_elasticity_coef": -1.454,
+          "cpa_roi_rank": 9
+        },
+        {
+          "sku": "SYN-ESP-019",
+          "category": "Esportes e Fitness",
+          "competition_level": "HIGH",
+          "orders_count": 13,
+          "avg_realized_margin_pct": 24.61,
+          "cpa_target_brl": 9.45,
+          "cpa_roi_ratio": 3.223,
+          "price_elasticity_coef": -2.169,
+          "cpa_roi_rank": 10
+        },
+        {
+          "sku": "SYN-ESP-011",
+          "category": "Esportes e Fitness",
+          "competition_level": "LOW",
+          "orders_count": 7,
+          "avg_realized_margin_pct": 17.86,
+          "cpa_target_brl": 4.43,
+          "cpa_roi_ratio": 3.16,
+          "price_elasticity_coef": -1.105,
+          "cpa_roi_rank": 11
+        },
+        {
+          "sku": "SYN-BRI-014",
+          "category": "Brinquedos Educativos",
+          "competition_level": "HIGH",
+          "orders_count": 6,
+          "avg_realized_margin_pct": 30.68,
+          "cpa_target_brl": 5.25,
+          "cpa_roi_ratio": 3.072,
+          "price_elasticity_coef": -2.169,
+          "cpa_roi_rank": 12
+        },
+        {
+          "sku": "SYN-BRI-008",
+          "category": "Brinquedos e Hobbies",
+          "competition_level": "MODERATE_HIGH",
+          "orders_count": 5,
+          "avg_realized_margin_pct": 26.84,
+          "cpa_target_brl": 7.32,
+          "cpa_roi_ratio": 2.985,
+          "price_elasticity_coef": -1.74,
+          "cpa_roi_rank": 13
+        },
+        {
+          "sku": "SYN-ELE-023",
+          "category": "Eletrônicos e Casa Inteligente",
+          "competition_level": "HIGH",
+          "orders_count": 9,
+          "avg_realized_margin_pct": 21.39,
+          "cpa_target_brl": 8.44,
+          "cpa_roi_ratio": 2.951,
+          "price_elasticity_coef": -2.229,
+          "cpa_roi_rank": 14
+        },
+        {
+          "sku": "SYN-BRI-038",
+          "category": "Brinquedos Educativos",
+          "competition_level": "MODERATE_HIGH",
+          "orders_count": 8,
+          "avg_realized_margin_pct": 21.81,
+          "cpa_target_brl": 7.42,
+          "cpa_roi_ratio": 2.894,
+          "price_elasticity_coef": -1.778,
+          "cpa_roi_rank": 15
+        }
+      ]
+    },
+    "q6_mart_margin_risk_tiers": {
+      "row_count": 3,
+      "columns": [
+        "risk_tier",
+        "sku_regime_pairs",
+        "total_orders",
+        "total_gmv_brl",
+        "mean_margin_pct",
+        "mean_divergence_rate_pct",
+        "mean_healthy_rate_pct"
+      ],
+      "rows": [
+        {
+          "risk_tier": "SAUDAVEL",
+          "sku_regime_pairs": 35,
+          "total_orders": 72,
+          "total_gmv_brl": 6680.12,
+          "mean_margin_pct": 26.13,
+          "mean_divergence_rate_pct": 0.32,
+          "mean_healthy_rate_pct": 96.75
+        },
+        {
+          "risk_tier": "ATENCAO",
+          "sku_regime_pairs": 47,
+          "total_orders": 123,
+          "total_gmv_brl": 9511.61,
+          "mean_margin_pct": 17.51,
+          "mean_divergence_rate_pct": 11.67,
+          "mean_healthy_rate_pct": 64.11
+        },
+        {
+          "risk_tier": "ALTO_RISCO",
+          "sku_regime_pairs": 125,
+          "total_orders": 305,
+          "total_gmv_brl": 21358.32,
+          "mean_margin_pct": 5.54,
+          "mean_divergence_rate_pct": 46.26,
+          "mean_healthy_rate_pct": 10.83
+        }
+      ]
+    },
+    "q7_price_tier_boundary_anomaly": {
+      "row_count": 3,
+      "columns": [
+        "unit_price_tier",
+        "orders_count",
+        "avg_expected_fee_pct",
+        "avg_fee_delta_brl",
+        "fee_overcharge_rate_pct",
+        "avg_net_margin_pct"
+      ],
+      "rows": [
+        {
+          "unit_price_tier": "1_ATE_79_99",
+          "orders_count": 440,
+          "avg_expected_fee_pct": 32.97,
+          "avg_fee_delta_brl": 0.14,
+          "fee_overcharge_rate_pct": 12.27,
+          "avg_net_margin_pct": 11.21
+        },
+        {
+          "unit_price_tier": "2_80_A_99_99",
+          "orders_count": 34,
+          "avg_expected_fee_pct": 32.98,
+          "avg_fee_delta_brl": 0.5,
+          "fee_overcharge_rate_pct": 26.47,
+          "avg_net_margin_pct": 16.77
+        },
+        {
+          "unit_price_tier": "3_100_A_199_99",
+          "orders_count": 12,
+          "avg_expected_fee_pct": 32.17,
+          "avg_fee_delta_brl": 0.42,
+          "fee_overcharge_rate_pct": 16.67,
+          "avg_net_margin_pct": 27.4
+        }
+      ]
+    }
+  }
+}
